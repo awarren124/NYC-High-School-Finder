@@ -20,7 +20,7 @@ class SchoolInfoTableViewController: UITableViewController {
         //tableView.delegate = self
         //let info = currentSchool.asArray()
         for i in 0..<cells.count {
-            cells[i].textLabel!.text = currentSchool.values[currentSchool.keys[i]] as? String
+            cells[i].textLabel!.text = currentSchool.values[School.keys[i]] as? String
         }
         
         // Uncomment the following line to preserve selection between presentations
@@ -39,7 +39,7 @@ class SchoolInfoTableViewController: UITableViewController {
         guard let cell = sender as? UITableViewCell else {return}
 
         if let controller = segue.destination as? ParagraphViewController{
-            switch cell.detailTextLabel!.text!{
+            /*switch cell.detailTextLabel!.text!{
             case "Overview":
                 if let val = currentSchool.values["overview_paragraph"] as? String {
                     controller.paragraph = val
@@ -58,7 +58,12 @@ class SchoolInfoTableViewController: UITableViewController {
             default:
                 break
                 
+            }*/
+            
+            if let val = currentSchool.values[School.keyMap[cell.detailTextLabel!.text!]!] as? String{
+                controller.paragraph = val
             }
+            
             controller.title = cell.detailTextLabel!.text!
         }
         
@@ -79,6 +84,8 @@ class SchoolInfoTableViewController: UITableViewController {
                 ]
                 controller.detailType = .Sports
                 break
+                
+            /*
             case "Extracurriculars":
                 
                 if let val = currentSchool.values["extracurricular_activities"] as? String {
@@ -114,10 +121,23 @@ class SchoolInfoTableViewController: UITableViewController {
                     controller.unformattedText = val
                     controller.detailType = .Subway
                 }
-                break;
+                break;*/
             default:
+                if let val = currentSchool.values[School.keyMap[cell.detailTextLabel!.text!]!] as? String {
+                    controller.unformattedText = val
+                }
+                switch cell.detailTextLabel!.text! {
+                case "Subway":
+                    controller.detailType = .Subway
+                    break
+                default:
+                    controller.detailType = .Default
+                }
                 break
             }
+            
+            
+            
             controller.title = cell.detailTextLabel!.text!
         }
     }

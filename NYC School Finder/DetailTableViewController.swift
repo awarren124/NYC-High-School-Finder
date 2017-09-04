@@ -153,9 +153,6 @@ class DetailTableViewController: UITableViewController {
 
 enum DetailType {
     case Sports
-    case Extracurriculars
-    case Bus
     case Subway
-    case Language
-    case English
+    case Default
 }

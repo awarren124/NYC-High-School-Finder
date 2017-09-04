@@ -11,11 +11,11 @@ import Foundation
 struct School {
     
     var values = [String: Any?]()
-
-    let keys = [
+    static var keyMap: [String:String] = [:]
+    static let keys = [
         //general
-        "school_name",
-        "dbn",
+        "school_name",//("School Name", "school_name"),
+        "dbn",//("School Code", "dbn"),
         "website",
         "interest1",
         "overview_paragraph",
@@ -34,7 +34,6 @@ struct School {
         "language_classes",
         "psal_sports_boys",
         "extracurricular_activities",
-        "city",
         
         //location
         "boro",
@@ -56,6 +55,36 @@ struct School {
         "psal_sports_coed",
         "school_sports"
     ]
+    
+    static let readableTerms = [
+        "School Name",
+        "School Code",
+        "Website",
+        "Interests",
+        "Overview",
+        "Grades",
+        "Total Students",
+        "Start Time",
+        "End Time",
+        "Attendance Rate",
+        "Graduation Rate",
+        "Geoeligibility",
+        "Additional Info",
+        "Academic Opportunities",
+        "ELL Programs",
+        "Language Classes",
+        "Sports",
+        "Extracurriculars",
+        "Borough",
+        "Address",
+        "Zip Code",
+        "Neighborhood",
+        "Subway",
+        "Bus",
+        "School Email",
+        "Phone Number",
+        "Fax Number"
+    ]
     /*
     let name: String
     let schoolCode: String
@@ -75,7 +104,7 @@ extension School {
     init?(json: [String: Any]) {
         
         
-        for key in keys {
+        for key in School.keys {
             if let val = json[key] {
                 print("here6 \(key)")
                 values[key] = val
@@ -118,14 +147,13 @@ extension School {
 
 
 
-    static func schools(withNameMatching query: String, completion: @escaping ([School]) -> Void) {
+    static func schools(withNameMatching query: String, searchByFilter: String, completion: @escaping ([School]) -> Void) {
         print("withNameMatching starting")
         let formattedQuery = query.replacingOccurrences(of: " ", with: "%")
         //let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/9pyc-nsiu.json?$q=\(query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")!;
-        let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/4isn-xf7m.json?$where=lower(school_name)%20like%20lower(%27%25\(formattedQuery.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)%25%27)")!;
+        let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/4isn-xf7m.json?$where=lower(\(searchByFilter))%20like%20lower(%27%25\(formattedQuery.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)%25%27)")!;
         var schools: [School] = []
         print(urlComponents.url!)
-
         json(fromURL: urlComponents, completion: { (json) in
             for result in json {
                 if let school = School(json: result) {
@@ -209,5 +237,9 @@ extension School {
         //}
         })
     }
+    
+    static func initializeMapDictionary(){
+        School.keyMap = Dictionary(keys: readableTerms, values: keys)
 
+    }
 }

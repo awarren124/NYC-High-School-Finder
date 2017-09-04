@@ -15,9 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //let data: Data = {"asda": 123}
-        School.schools(withNameMatching: "Bronx High School of Science") { schools in
-            print(schools)
-        }
+
         
     }
 

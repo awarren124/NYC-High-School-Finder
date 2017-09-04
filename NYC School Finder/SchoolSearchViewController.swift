@@ -17,11 +17,14 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
     
     var selectedSchool: School!
     
+    var currentSearchByFilter = "School Name"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
+        School.initializeMapDictionary()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -32,7 +35,7 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let text = searchBar.text
         print("searchBarSearchButtonClicked")
-        School.schools(withNameMatching: text!, completion: { (schools) in
+        School.schools(withNameMatching: text!, searchByFilter: School.keyMap[currentSearchByFilter]!, completion: { (schools) in
             self.items = schools
             print(schools)
             OperationQueue.main.addOperation {
