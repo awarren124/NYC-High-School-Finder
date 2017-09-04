@@ -122,7 +122,7 @@ extension School {
         print("withNameMatching starting")
         let formattedQuery = query.replacingOccurrences(of: " ", with: "%")
         //let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/9pyc-nsiu.json?$q=\(query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")!;
-        let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/4isn-xf7m.json?$where=school_name%20like%20%27%25\(formattedQuery.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)%25%27")!;
+        let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/4isn-xf7m.json?$where=lower(school_name)%20like%20lower(%27%25\(formattedQuery.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)%25%27)")!;
         var schools: [School] = []
         print(urlComponents.url!)
 
