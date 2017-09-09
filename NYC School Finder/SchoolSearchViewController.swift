@@ -13,11 +13,22 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    
+
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(SchoolSearchViewController.handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+        
+        return refreshControl
+    }()
+    
     var items = [School]()
     
     var selectedSchool: School!
     
     var currentSearchByFilter = "School Name"
+    var currentSortByFilter = "Relevance"
+    var currentSortByDirection = "Ascending"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +36,9 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
         tableView.dataSource = self
         tableView.delegate = self
         School.initializeMapDictionary()
+        self.tableView.addSubview(self.refreshControl)
+
+        print("HERREE")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -32,19 +46,48 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        search(withText: searchBar.text!)
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let text = searchBar.text
+        search(withText: text!)
+    }
+    
+    func search(withText text: String){
         print("searchBarSearchButtonClicked")
-        School.schools(withNameMatching: text!, searchByFilter: School.keyMap[currentSearchByFilter]!, completion: { (schools) in
-            self.items = schools
-            print(schools)
-            OperationQueue.main.addOperation {
-                self.searchBar.endEditing(true)
-                self.tableView.reloadData()
-                print("huh")
-            }
+        var filters = [
+            School.keyMap[currentSearchByFilter],
+            School.keyMap[currentSortByFilter],
+            School.keyMap[currentSortByDirection]
+        ]
+        if currentSortByFilter == "Relevance" {
+            filters[1] = ""
+            filters[2] = ""
+        }
+        print(filters)
+        print(School.keyMap)
+        School.schools(withNameMatching: text, filterOptions: filters as! [String], completion: { (schools, error) in
+            if(!error){
+                self.items = schools
+                print(schools)
+                OperationQueue.main.addOperation {
+                    self.searchBar.endEditing(true)
+                    self.tableView.reloadData()
+                    print("huh")
+                }
             
-            print("realoding data...")
+                print("realoding data...")
+            }else{
+                let alertController = UIAlertController(title: "Error", message: "An Error Occured", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                OperationQueue.main.addOperation {
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
         })
     }
     
@@ -70,7 +113,7 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "School Name", for: indexPath)
         cell.textLabel!.text = items[indexPath.row].values["school_name"] as? String
-        cell.detailTextLabel!.text = items[indexPath.row].values["boro"] as? String
+        //cell.detailTextLabel!.text = items[indexPath.row].values["boro"] as? String
         return cell
     }
     
