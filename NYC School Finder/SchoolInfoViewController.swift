@@ -37,7 +37,7 @@ class SchoolInfoViewController: UIViewController {
     
     @IBAction func mapsButtonPressed(_ sender: UIButton) {
         
-        School.coordinates(fromSchoolCode: currentSchool.values["dbn"] as! String, completion: {(coords, error) in
+        School.coordinates(fromSchoolCode: currentSchool.values["dbn"] as! String, completion: {(coords, error, statusCode) in
             if(!error){
                 let latitude: CLLocationDegrees = coords["latitude"]!
                 let longitude: CLLocationDegrees = coords["longitude"]!
@@ -53,6 +53,8 @@ class SchoolInfoViewController: UIViewController {
                 let mapItem = MKMapItem(placemark: placemark)
                 mapItem.name = self.currentSchool.values["school_name"] as? String
                 mapItem.openInMaps(launchOptions: options)
+            }else{
+                //TODO: this
             }
         })
         

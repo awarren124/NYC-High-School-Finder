@@ -136,7 +136,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="iuW-3d-rEU">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="tPs-vF-sOo">
+                        <barButtonItem key="rightBarButtonItem" title="Apply" style="done" id="tPs-vF-sOo">
                             <connections>
                                 <action selector="doneButtonPressed:" destination="94b-5N-mWC" id="dZJ-Zj-TiP"/>
                             </connections>

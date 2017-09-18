@@ -20,6 +20,7 @@
 		01E540D71F53A054005CAC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E540D61F53A054005CAC3F /* Assets.xcassets */; };
 		01E540DA1F53A054005CAC3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E540D81F53A054005CAC3F /* LaunchScreen.storyboard */; };
 		01E540E21F53AC98005CAC3F /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E540E11F53AC98005CAC3F /* School.swift */; };
+		5E43740531815560A240D3F2 /* Pods_NYC_High_School_Info.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2182D6BC768FD0075CAE2E /* Pods_NYC_High_School_Info.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,9 @@
 		01E540D91F53A054005CAC3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01E540DB1F53A054005CAC3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01E540E11F53AC98005CAC3F /* School.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
+		1F2182D6BC768FD0075CAE2E /* Pods_NYC_High_School_Info.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYC_High_School_Info.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75F1686FDCC14F5E3F430F6B /* Pods-NYC High School Info.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYC High School Info.release.xcconfig"; path = "Pods/Target Support Files/Pods-NYC High School Info/Pods-NYC High School Info.release.xcconfig"; sourceTree = "<group>"; };
+		DD903E09E35865548A8D24A6 /* Pods-NYC High School Info.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYC High School Info.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NYC High School Info/Pods-NYC High School Info.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E43740531815560A240D3F2 /* Pods_NYC_High_School_Info.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +61,8 @@
 			children = (
 				01E540CE1F53A054005CAC3F /* NYC High School Info */,
 				01E540CD1F53A054005CAC3F /* Products */,
+				3CA393D0F500957BEFEF919A /* Pods */,
+				ED01BE9E493161BBEF5ED399 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +96,23 @@
 			path = "NYC School Finder";
 			sourceTree = "<group>";
 		};
+		3CA393D0F500957BEFEF919A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DD903E09E35865548A8D24A6 /* Pods-NYC High School Info.debug.xcconfig */,
+				75F1686FDCC14F5E3F430F6B /* Pods-NYC High School Info.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		ED01BE9E493161BBEF5ED399 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F2182D6BC768FD0075CAE2E /* Pods_NYC_High_School_Info.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -96,9 +120,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01E540DE1F53A054005CAC3F /* Build configuration list for PBXNativeTarget "NYC High School Info" */;
 			buildPhases = (
+				DB276F543E47E2718EBCC07C /* [CP] Check Pods Manifest.lock */,
 				01E540C81F53A054005CAC3F /* Sources */,
 				01E540C91F53A054005CAC3F /* Frameworks */,
 				01E540CA1F53A054005CAC3F /* Resources */,
+				B2F74844540B7E2735109DD2 /* [CP] Embed Pods Frameworks */,
+				2FC5817C58217C392C140DD6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -156,6 +183,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2FC5817C58217C392C140DD6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NYC High School Info/Pods-NYC High School Info-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2F74844540B7E2735109DD2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NYC High School Info/Pods-NYC High School Info-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB276F543E47E2718EBCC07C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		01E540C81F53A054005CAC3F /* Sources */ = {
@@ -292,6 +367,7 @@
 		};
 		01E540DF1F53A054005CAC3F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD903E09E35865548A8D24A6 /* Pods-NYC High School Info.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = M5DL88AV3E;
@@ -305,6 +381,7 @@
 		};
 		01E540E01F53A054005CAC3F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75F1686FDCC14F5E3F430F6B /* Pods-NYC High School Info.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = M5DL88AV3E;
