@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16C68" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="SchoolModel" representedClassName="SchoolModel" syncable="YES" codeGenerationType="class">
+        <attribute name="academicopportunities1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addtl_info1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="attendance_rate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="boro" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dbn" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ell_programs" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="end_time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="extracurricular_activities" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fax_number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="finalgrades" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="geoeligibility" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="graduation_rate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="interest1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="language_classes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="neighborhood" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="overview_paragraph" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone_number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="psal_sports_boys" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="psal_sports_coed" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="psal_sports_girls" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="school_email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="school_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="school_sports" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="start_time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subway" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="total_students" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="SchoolModel" positionX="-63" positionY="-18" width="128" height="495"/>
+    </elements>
+</model>

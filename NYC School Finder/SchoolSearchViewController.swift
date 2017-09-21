@@ -60,12 +60,12 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
             filters[1] = ""
             filters[2] = ""
         }
-        print(filters)
-        print(School.keyMap)
+        //print(filters)
+        //print(School.keyMap)
         School.schools(withMatching: text, filterOptions: filters as! [String], completion: { (schools, error, statusCode) in
             if(!error){
                 self.items = schools
-                print(schools)
+                //print(schools)
                 OperationQueue.main.addOperation {
                     self.searchBar.endEditing(true)
                     self.tableView.reloadData()
@@ -128,6 +128,7 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
             let cell = sender as! UITableViewCell
             let indexPath = self.tableView!.indexPath(for: cell)
             controller.currentSchool = items[(indexPath?.row)!]
+            controller.savedSchool = false
         }
     }
 

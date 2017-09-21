@@ -160,7 +160,7 @@ extension School {
         //let urlPath = "?$where=lower(\(filterOptions[0])) like lower('%25\(formattedQuery)%25')&$order=\(filterOptions[1]) \(filterOptions[2])"
         let urlPath = "?$where=lower(\(filterOptions[0]))%20like%20lower(%27%25\(formattedQuery.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)%25%27)&$order=\(filterOptions[1])%20\(filterOptions[2])"
         let url = urlRoot + urlPath
-        print(url)
+        //print(url)
         let urlComponents: URLComponents = URLComponents(string: url)!;
         var schools: [School] = []
         print(urlComponents.url!)
@@ -242,7 +242,7 @@ extension School {
     }
     
     static func coordinates(fromSchoolCode code: String, completion: @escaping ([String: Double], Bool, Int) -> Void){
-        print(code)
+        //print(code)
         let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/9pyc-nsiu.json?ats_system_code=\(code)&$select=longitude,%20latitude")!;
         json(fromURL: urlComponents, completion: { (json, error, statusCode) in
             //for result in json {
@@ -265,4 +265,5 @@ extension School {
         School.keyMap = Dictionary(keys: readableTerms, values: keys)
 
     }
+    
 }

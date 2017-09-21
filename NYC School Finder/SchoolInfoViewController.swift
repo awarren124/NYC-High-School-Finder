@@ -11,17 +11,28 @@ import MapKit
 
 class SchoolInfoViewController: UIViewController {
     
-    
     @IBOutlet weak var containerView: UIView!
     var currentSchool: School!
-    
     var tableView: UITableView!
+    var savedSchool: Bool!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = (currentSchool.values["school_name"] as! String)
         // Do any additional setup after loading the view.
+        if savedSchool {
+            saveButton.title = "Saved"
+            saveButton.isEnabled = false
+        }else{
+            saveButton.title = "Save"
+            saveButton.isEnabled = true
+
+        }
+        
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -60,6 +71,22 @@ class SchoolInfoViewController: UIViewController {
         
         
     }
+    
+    
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let schoolModel = SchoolModel(context: context)
+        for key in School.keys{
+            if(key != "ASC" && key != "DESC"){
+                schoolModel.setValue(currentSchool.values[key] as! String, forKey: key)
+            }
+        }
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        saveButton.title = "Saved"
+        saveButton.isEnabled = false
+    }
+    
+
     
     /*
      // MARK: - Navigation
