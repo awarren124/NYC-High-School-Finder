@@ -14,8 +14,8 @@ struct School {
     static var keyMap: [String:String] = [:]
     static let keys = [
         //general
-        "school_name",//("School Name", "school_name"),
-        "dbn",//("School Code", "dbn"),
+        "school_name",
+        "dbn",
         "website",
         "interest1",
         "overview_paragraph",
@@ -37,7 +37,8 @@ struct School {
         
         //location
         "boro",
-        "location",
+        //"location",
+        "primary_address_line_1",
         "zip",
         "neighborhood",
         
@@ -91,19 +92,6 @@ struct School {
         "Ascending",
         "Descending"
     ]
-    /*
-    let name: String
-    let schoolCode: String
-    let managedByName: String
-    let grades: String
-    //let openedYear: String
-    let borough: String
-    let address: String
-    let zipCode: String
-    let principalName: String
-    //let superintendent: String
-    let latitude: String
-    let longitude: String*/
 }
 
 extension School {
@@ -112,51 +100,30 @@ extension School {
         
         for key in School.keys {
             if let val = json[key] {
-                //print("here6 \(key)")
                 values[key] = val
+                if key == "attendance_rate" || key == "graduation_rate" {
+                    values[key] = School.formatPercent(value: val)
+                }
             }else{
-                //print("here5")
                 values[key] = "N/A"
             }
         }
         
-        
-        /*guard let name = json["location_name"] as? String,
-            let schoolCode = json["ats_system_code"] as? String,
-            let managedByName = json["managed_by_name"] as? String,
-            let grades = json["location_type_description"] as? String,
-            //let openedYear = json["open_date"] as! String,
-            let borough = json["city"] as? String,
-            let address = json["primary_address"] as? String,
-            let zipCode = json["zip"] as? String,
-            let principalName = json["principal_name"] as? String,
-            let latitude = json["latitude"] as? String,
-            let longitude = json["longitude"] as? String
-            //let superintendent = json["superintendent"] as! String
-        else{
-            //print("here4")
-            return nil
-        }
-        self.name = name
-        self.schoolCode = schoolCode
-        self.managedByName = managedByName
-        self.grades = grades
-        //self.openedYear = openedYear.substring(to: openedYear.index(openedYear.startIndex, offsetBy: 4))
-        self.borough = borough
-        self.address = address
-        self.zipCode = zipCode
-        self.principalName = principalName
-        self.latitude = latitude
-        self.longitude = longitude
-        //self.superintendent = superintendent*/
+
     }
-
-
+    
+    static func formatPercent(value: Any?) -> String {
+        if let val = value as? String {
+            return "\(Int(Double(val)! * 100))%"
+        }
+        return "N/A"
+    }
 
     static func schools(withMatching query: String, filterOptions: [String], completion: @escaping ([School], Bool, Int) -> Void) {
         print("withNameMatching starting")
         let formattedQuery = query.replacingOccurrences(of: " ", with: "%")
-        let urlRoot = "https://data.cityofnewyork.us/resource/4isn-xf7m.json"
+        //let urlRoot = "https://data.cityofnewyork.us/resource/4isn-xf7m.json"
+        let urlRoot = "https://data.cityofnewyork.us/resource/97mf-9njv.json"
         //let urlPath = "?$where=lower(\(filterOptions[0])) like lower('%25\(formattedQuery)%25')&$order=\(filterOptions[1]) \(filterOptions[2])"
         let urlPath = "?$where=lower(\(filterOptions[0]))%20like%20lower(%27%25\(formattedQuery.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)%25%27)&$order=\(filterOptions[1])%20\(filterOptions[2])"
         let url = urlRoot + urlPath
@@ -168,10 +135,9 @@ extension School {
             if(!error){
                 for result in json {
                     if let school = School(json: result) {
-                        //print(school)
                         schools.append(school)
                     }else{
-                        print("here7")
+                        
                     }
                 }
             }
@@ -184,7 +150,9 @@ extension School {
     static func retrieveSchoolWithCount(limit: Int, offset: Int, completion: @escaping ([School], Bool, Int) -> Void){
         print("retrieveSchoolWithCount starting")
         //let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/9pyc-nsiu.json?$limit=\(limit)&$offset=\(offset)")!;
-        let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/4isn-xf7m.json?$limit=\(limit)&$offset=\(offset)")!;
+        //let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/4isn-xf7m.json?$limit=\(limit)&$offset=\(offset)")!;
+        let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/97mf-9njv.json?$limit=\(limit)&$offset=\(offset)")!;
+
         var schools = [School]()
         json(fromURL: urlComponents, completion: { (json, error, statusCode) in
             if(!error){
@@ -218,34 +186,11 @@ extension School {
             completion(json, errorBool, statusCode)
         }).resume()
     }
-    
-    func generalInfoAsArray() -> [String]{
-        return [
-            /*self.name,
-            self.schoolCode,
-            self.managedByName,
-            self.grades,
-            self.principalName*/
-        ]
-    }
-    
-    func locationInfoAsArray() -> [String]{
-        return [
-            /*self.borough,
-            self.address,
-            self.zipCode*/
-        ]
-    }
-    
-    func asArray() -> [String] {
-        return generalInfoAsArray() + locationInfoAsArray()
-    }
-    
+  
     static func coordinates(fromSchoolCode code: String, completion: @escaping ([String: Double], Bool, Int) -> Void){
-        //print(code)
         let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/9pyc-nsiu.json?ats_system_code=\(code)&$select=longitude,%20latitude")!;
+        print(urlComponents)
         json(fromURL: urlComponents, completion: { (json, error, statusCode) in
-            //for result in json {
             var coordinates: [String: Double] = [:]
             if(!error){
                 guard let lat = json[0]["latitude"] as? String,
@@ -257,7 +202,6 @@ extension School {
             coordinates = ["latitude": Double(lat)!, "longitude": Double(lon)!]
             }
             completion(coordinates, error, statusCode)
-        //}
         })
     }
     

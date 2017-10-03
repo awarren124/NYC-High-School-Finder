@@ -14,14 +14,16 @@ class SchoolInfoTableViewController: UITableViewController {
     
     @IBOutlet var cells: [UITableViewCell]!
 
+    let boroughCellIndex = 18
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tableView.delegate = self
-        //let info = currentSchool.asArray()
+
         for i in 0..<cells.count {
             cells[i].textLabel!.text = currentSchool.values[School.keys[i]] as? String
+            print(cells[i].detailTextLabel!.text, i)
         }
+        cells[boroughCellIndex].textLabel!.text = formatBorough(forAbbreviation: currentSchool.values["boro"] as! String)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,7 +31,7 @@ class SchoolInfoTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -185,8 +187,26 @@ class SchoolInfoTableViewController: UITableViewController {
                 }
             }
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
  
+    func formatBorough(forAbbreviation abbreviation: String) -> String{
+        switch abbreviation {
+        case "M":
+            return "Manhattan"
+        case "B":
+            return "Brooklyn"
+        case "X":
+            return "Bronx"
+        case "S":
+            return "Staten Island"
+        case "Q":
+            return "Queens"
+        default:
+            return "N/A"
+        }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

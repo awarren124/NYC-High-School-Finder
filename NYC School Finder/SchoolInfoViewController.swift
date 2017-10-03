@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import SVProgressHUD
 
 class SchoolInfoViewController: UIViewController {
     
@@ -28,11 +29,11 @@ class SchoolInfoViewController: UIViewController {
         }else{
             saveButton.title = "Save"
             saveButton.isEnabled = true
-
+            
         }
         
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -48,27 +49,15 @@ class SchoolInfoViewController: UIViewController {
     
     @IBAction func mapsButtonPressed(_ sender: UIButton) {
         
-        School.coordinates(fromSchoolCode: currentSchool.values["dbn"] as! String, completion: {(coords, error, statusCode) in
-            if(!error){
-                let latitude: CLLocationDegrees = coords["latitude"]!
-                let longitude: CLLocationDegrees = coords["longitude"]!
-                
-                let regionDistance:CLLocationDistance = 10000
-                let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
-                let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
-                let options = [
-                    MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
-                    MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
-                ]
-                let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-                let mapItem = MKMapItem(placemark: placemark)
-                mapItem.name = self.currentSchool.values["school_name"] as? String
-                mapItem.openInMaps(launchOptions: options)
-            }else{
-                //TODO: this
+        if ((currentSchool.values["primary_address_line_1"]!) as! String) == "N/A" {
+            SVProgressHUD.showError(withStatus: "Maps is not available for this school.")
+            SVProgressHUD.dismiss(withDelay: 0.5)
+        }else{
+            let mapURL = "http://maps.apple.com/?address=\(((currentSchool.values["primary_address_line_1"]!) as! String).addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)"
+            if UIApplication.shared.canOpenURL(URL(string: (mapURL))!){
+                UIApplication.shared.open(URL(string: mapURL)!, options: [:], completionHandler: nil)
             }
-        })
-        
+        }
         
     }
     
@@ -86,7 +75,7 @@ class SchoolInfoViewController: UIViewController {
         saveButton.isEnabled = false
     }
     
-
+    
     
     /*
      // MARK: - Navigation

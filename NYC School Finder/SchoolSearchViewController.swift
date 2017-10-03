@@ -36,8 +36,6 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 //        SVProgressHUD.show()
     }
-
-
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let text = searchBar.text

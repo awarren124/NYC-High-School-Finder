@@ -16,7 +16,6 @@ class SavedSchoolsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -37,6 +36,19 @@ class SavedSchoolsTableViewController: UITableViewController {
 
     }
 
+    
+    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
+        if !tableView.isEditing {
+            sender.title = "Done"
+            sender.style = .done
+            tableView.setEditing(true, animated: true)
+        }else{
+            sender.title = "Edit"
+            sender.style = .plain
+            tableView.setEditing(false, animated: true)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -82,23 +94,6 @@ class SavedSchoolsTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
- 
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
     // MARK: - Navigation
 
@@ -115,7 +110,7 @@ class SavedSchoolsTableViewController: UITableViewController {
             print(selectedSchoolModel.entity.attributesByName)
             var dict: [String: String] = [:]
             for key in selectedSchoolModel.entity.attributesByName.keys{
-                dict[key] = selectedSchoolModel.value(forKey: key) as! String
+                dict[key] = selectedSchoolModel.value(forKey: key) as? String
             }
             vc.currentSchool = School(json: dict)
             vc.savedSchool = true

@@ -120,14 +120,8 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
-        /*schoolView.currentSearchByFilter = self.currentSearchByFilter
-        schoolView.currentSortByFilter = self.currentSortByFilter
-        schoolView.currentSortByDirection = self.currentSortByDirection*/
-        print("here9")
         self.presentingViewController?.dismiss(animated: true, completion: {
-            //self.schoolView.refreshControl.beginRefreshing()
-            //self.schoolView.tableView.setContentOffset(CGPoint(x: 0, y: -self.schoolView.refreshControl.frame.size.height*5), animated: true)
-
+            self.schoolView.search()
         })
     }
 

@@ -13,6 +13,7 @@
 		010EEFEE1F5CDC8A0031DE45 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EEFED1F5CDC8A0031DE45 /* DetailTableViewController.swift */; };
 		013CF0201F71C2D900AD8AF6 /* SavedSchoolsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013CF01F1F71C2D900AD8AF6 /* SavedSchoolsTableViewController.swift */; };
 		018614351F6F6A790029BBBC /* SchoolModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 018614331F6F6A790029BBBC /* SchoolModel.xcdatamodeld */; };
+		018648741F758A0E0030EBDB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018648731F758A0E0030EBDB /* SettingsTableViewController.swift */; };
 		01946E671F5DAA4900298B5B /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01946E661F5DAA4900298B5B /* FilterViewController.swift */; };
 		01946E691F5DC61300298B5B /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01946E681F5DC61300298B5B /* DictionaryExtension.swift */; };
 		01C395901F5B1F3100D9670D /* SchoolInfoTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3958F1F5B1F3100D9670D /* SchoolInfoTableController.swift */; };
@@ -33,6 +34,7 @@
 		010EEFED1F5CDC8A0031DE45 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		013CF01F1F71C2D900AD8AF6 /* SavedSchoolsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSchoolsTableViewController.swift; sourceTree = "<group>"; };
 		018614341F6F6A790029BBBC /* SchoolModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SchoolModel.xcdatamodel; sourceTree = "<group>"; };
+		018648731F758A0E0030EBDB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		01946E661F5DAA4900298B5B /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		01946E681F5DC61300298B5B /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
 		01C3958F1F5B1F3100D9670D /* SchoolInfoTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolInfoTableController.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				010EEFED1F5CDC8A0031DE45 /* DetailTableViewController.swift */,
 				01946E661F5DAA4900298B5B /* FilterViewController.swift */,
 				013CF01F1F71C2D900AD8AF6 /* SavedSchoolsTableViewController.swift */,
+				018648731F758A0E0030EBDB /* SettingsTableViewController.swift */,
 			);
 			name = "NYC High School Info";
 			path = "NYC School Finder";
@@ -248,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01E540D21F53A054005CAC3F /* ViewController.swift in Sources */,
+				018648741F758A0E0030EBDB /* SettingsTableViewController.swift in Sources */,
 				0104492B1F57AC320055DBD4 /* SchoolSearchViewController.swift in Sources */,
 				018614351F6F6A790029BBBC /* SchoolModel.xcdatamodeld in Sources */,
 				010EEFEC1F5CD8410031DE45 /* ParagraphViewController.swift in Sources */,
