@@ -104,8 +104,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.window?.makeKeyAndVisible()
                 }
             }else{
-                SVProgressHUD.showError(withStatus: "Link Was Invalid")
-                SVProgressHUD.dismiss(withDelay: 2)
+                OperationQueue.main.addOperation {
+                    SVProgressHUD.showError(withStatus: "Link Was Invalid")
+                    SVProgressHUD.dismiss(withDelay: 2)
+                }
             }
         })
         
