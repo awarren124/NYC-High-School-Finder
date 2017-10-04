@@ -114,7 +114,15 @@ extension School {
     
     static func formatPercent(value: Any?) -> String {
         if let val = value as? String {
-            return "\(Int(Double(val)! * 100))%"
+            print(val)
+            if let double = Double(val){
+                print(double)
+                return  "\(Int(double * 100))%"
+            }else{
+                return val
+                
+            }
+            
         }
         return "N/A"
     }
@@ -151,6 +159,8 @@ extension School {
         print("retrieveSchoolWithCount starting")
         //let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/9pyc-nsiu.json?$limit=\(limit)&$offset=\(offset)")!;
         //let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/4isn-xf7m.json?$limit=\(limit)&$offset=\(offset)")!;
+        let urlRoot = "https://data.cityofnewyork.us/resource/97mf-9njv.json"
+
         let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/97mf-9njv.json?$limit=\(limit)&$offset=\(offset)")!;
 
         var schools = [School]()
@@ -164,6 +174,25 @@ extension School {
             }
         print("retrieveSchoolWithCount completion")
         completion(schools, error, statusCode)
+        })
+    }
+    
+    static func retrieveSchoolFromCode(code: String, completion: @escaping (School?, Bool) -> Void){
+        let url = "https://data.cityofnewyork.us/resource/97mf-9njv.json"
+        let query = "?dbn=\(code.uppercased())"
+        let urlComponents = URLComponents(string: (url + query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!))
+        print(urlComponents)
+        var school: School?
+        json(fromURL: urlComponents!, completion: { (json, error, statusCode) in
+            if(!error){
+                for result in json {
+                    if let s = School(json: result) {
+                        school = s
+                    }
+                }
+            }
+            print("retrieveSchoolWithCount completion")
+            completion(school, error)
         })
     }
     

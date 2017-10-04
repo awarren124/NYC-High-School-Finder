@@ -125,7 +125,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
         <!--Search-->
         <scene sceneID="Zm8-CY-fO9">
             <objects>
-                <viewController title="Search" id="IA0-kG-dbc" customClass="SchoolSearchViewController" customModule="NYC_High_School_Info" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="School Search View Controller" title="Search" id="IA0-kG-dbc" customClass="SchoolSearchViewController" customModule="NYC_High_School_Info" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lPC-ag-MBa"/>
                         <viewControllerLayoutGuide type="bottom" id="Wrm-bM-ciW"/>
@@ -332,7 +332,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
         <!--School Info View Controller-->
         <scene sceneID="tBd-gw-pNA">
             <objects>
-                <viewController id="GGE-ZV-tIA" customClass="SchoolInfoViewController" customModule="NYC_High_School_Info" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="School Info View Controller" id="GGE-ZV-tIA" customClass="SchoolInfoViewController" customModule="NYC_High_School_Info" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="G8L-La-J8C"/>
                         <viewControllerLayoutGuide type="bottom" id="9wa-gO-Sw4"/>
@@ -342,7 +342,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZ8-zg-azp">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="530"/>
+                                <rect key="frame" x="0.0" y="-44" width="375" height="623"/>
                                 <connections>
                                     <segue destination="JCs-ah-cHy" kind="embed" id="y6n-se-Ix7"/>
                                 </connections>
@@ -397,7 +397,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
             <objects>
                 <tableViewController id="JCs-ah-cHy" customClass="SchoolInfoTableViewController" customModule="NYC_High_School_Info" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6yZ-K8-h1m">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="530"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -733,14 +733,14 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="olB-uP-Uwc">
-                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Academic Opportunities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ycw-Sg-ohS">
-                                                    <rect key="frame" x="15" y="25.5" width="136.5" height="14.5"/>
+                                                    <rect key="frame" x="16" y="25.5" width="136.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -1141,7 +1141,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
             <objects>
                 <tableViewController id="Uff-Sa-Y3o" customClass="DetailTableViewController" customModule="NYC_High_School_Info" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="tbd-db-as1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="530"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -1182,7 +1182,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                         <viewControllerLayoutGuide type="bottom" id="19D-Iw-mIa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Q2m-6N-Gug">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="530"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cd-cL-gjF">
@@ -1207,7 +1207,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
         <!--Tab Bar Controller-->
         <scene sceneID="LnU-Ci-mQf">
             <objects>
-                <tabBarController id="0cA-E3-nxi" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Tab Bar Controller" id="0cA-E3-nxi" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="udy-ME-mjG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1217,6 +1217,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                         <segue destination="r4z-8d-oPr" kind="relationship" relationship="viewControllers" id="xNW-9y-5sf"/>
                         <segue destination="gtR-qa-uya" kind="relationship" relationship="viewControllers" id="1Xa-rU-GeX"/>
                         <segue destination="cG1-IF-cQ0" kind="relationship" relationship="viewControllers" id="Y7p-EP-Jsy"/>
+                        <segue destination="GGE-ZV-tIA" kind="show" identifier="Deep Link Segue" id="T6B-VE-Fgm"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wyr-5u-T9y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1226,7 +1227,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
         <!--Navigation Controller-->
         <scene sceneID="NOr-vH-bm3">
             <objects>
-                <navigationController id="r4z-8d-oPr" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Search Navigation Controller" id="r4z-8d-oPr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="search" id="A3P-CW-qmk"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KDe-1w-i5M">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1244,6 +1245,6 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
     <inferredMetricsTieBreakers>
         <segue reference="fck-m3-OgQ"/>
         <segue reference="4sE-os-lij"/>
-        <segue reference="Cl1-js-sED"/>
+        <segue reference="T6B-VE-Fgm"/>
     </inferredMetricsTieBreakers>
 </document>
