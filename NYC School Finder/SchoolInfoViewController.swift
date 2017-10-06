@@ -75,6 +75,14 @@ class SchoolInfoViewController: UIViewController {
         saveButton.isEnabled = false
     }
     
+    @IBAction func shareButtonPressed(_ sender: UIBarButtonItem) {
+        let text = "Chech out \(currentSchool.values["school_name"] as! String) in the NYC High School Info app!"
+        let url = URL(string: "nychs://\(currentSchool.values["dbn"] as! String)")!
+        let activityViewController = UIActivityViewController(activityItems: [text, url], applicationActivities: nil)
+        navigationController?.present(activityViewController, animated: true) {
+            // ...
+        }
+    }
     
     
     /*
