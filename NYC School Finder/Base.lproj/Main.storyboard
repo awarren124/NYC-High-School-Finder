@@ -304,8 +304,8 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search By" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVp-ty-NDi">
-                                <rect key="frame" x="115" y="345" width="145" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sort By" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVp-ty-NDi">
+                                <rect key="frame" x="115" y="345" width="145" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <nil key="textColor"/>
@@ -343,7 +343,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZ8-zg-azp">
-                                <rect key="frame" x="0.0" y="-44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="530"/>
                                 <connections>
                                     <segue destination="JCs-ah-cHy" kind="embed" id="y6n-se-Ix7"/>
                                 </connections>
@@ -404,15 +404,15 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
         <scene sceneID="SaK-bW-XiQ">
             <objects>
                 <tableViewController id="JCs-ah-cHy" customClass="SchoolInfoTableViewController" customModule="NYC_High_School_Info" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6yZ-K8-h1m">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="6yZ-K8-h1m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="530"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="General" id="w19-by-WTt">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="neC-0v-Bvn" detailTextLabel="VaM-FO-85Z" style="IBUITableViewCellStyleSubtitle" id="Pt1-NA-gre">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pt1-NA-gre" id="Aw4-vO-UTU">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -434,9 +434,10 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98036521669999999" green="0.83621585255760156" blue="0.53084418694536106" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="rqM-uK-35d" detailTextLabel="WbN-9r-MAb" style="IBUITableViewCellStyleSubtitle" id="nHz-c3-mpt">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nHz-c3-mpt" id="WWw-8p-fUe">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -458,9 +459,10 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98036521669999999" green="0.83621585255760156" blue="0.53084418694536106" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="School Info" textLabel="ddM-Es-xMd" detailTextLabel="7I4-zk-FpO" style="IBUITableViewCellStyleSubtitle" id="cBz-pb-0my">
-                                        <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cBz-pb-0my" id="FdD-OT-qa0">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -482,9 +484,10 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98036521669999999" green="0.83621585255760156" blue="0.53084418694536106" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="uSy-4y-1CF" detailTextLabel="muT-ul-coz" style="IBUITableViewCellStyleSubtitle" id="wx2-dv-moX">
-                                        <rect key="frame" x="0.0" y="160" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="187.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wx2-dv-moX" id="X4t-jW-B8B">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -506,9 +509,10 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98036521669999999" green="0.83621585255760156" blue="0.53084418694536106" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="School Info" textLabel="KNU-nA-rhb" detailTextLabel="U6N-C8-16H" style="IBUITableViewCellStyleSubtitle" id="6w8-vx-jQJ">
-                                        <rect key="frame" x="0.0" y="204" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="231.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6w8-vx-jQJ" id="wWY-Bl-1Tf">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -530,12 +534,13 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98036521669999999" green="0.83621585255760156" blue="0.53084418694536106" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="7by-ic-0Fe" kind="show" id="fck-m3-OgQ"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="wNE-QY-dhx" detailTextLabel="lMV-oZ-su0" style="IBUITableViewCellStyleSubtitle" id="p24-vU-6jX">
-                                        <rect key="frame" x="0.0" y="248" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="275.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p24-vU-6jX" id="ME9-NX-LQq">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -557,9 +562,10 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98036521669999999" green="0.83621585255760156" blue="0.53084418694536106" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="Lvj-Xl-C8H" detailTextLabel="OB9-7O-Q0N" style="IBUITableViewCellStyleSubtitle" id="kNw-Dv-gU3">
-                                        <rect key="frame" x="0.0" y="292" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="319.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kNw-Dv-gU3" id="p6P-ug-qQe">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -581,9 +587,10 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98036521669999999" green="0.83621585255760156" blue="0.53084418694536106" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="Bzq-pK-afJ" detailTextLabel="tUr-7o-h6O" style="IBUITableViewCellStyleSubtitle" id="n3I-uQ-OVA">
-                                        <rect key="frame" x="0.0" y="336" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="363.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n3I-uQ-OVA" id="Yjn-rg-BLG">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -605,9 +612,10 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98036521669999999" green="0.83621585255760156" blue="0.53084418694536106" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="sLb-XH-iV9" detailTextLabel="x1T-ec-nhd" style="IBUITableViewCellStyleSubtitle" id="2xG-kh-HIo">
-                                        <rect key="frame" x="0.0" y="380" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="407.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2xG-kh-HIo" id="a1m-8b-cxT">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -629,9 +637,10 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98036521669999999" green="0.83621585255760156" blue="0.53084418694536106" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="EKg-qs-BCe" detailTextLabel="7aA-1k-86m" style="IBUITableViewCellStyleSubtitle" id="Sy7-VN-7Je">
-                                        <rect key="frame" x="0.0" y="424" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="451.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sy7-VN-7Je" id="ceO-id-qoq">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -653,9 +662,10 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98036521669999999" green="0.83621585255760156" blue="0.53084418694536106" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="kIs-NL-Uyo" detailTextLabel="kgR-nq-P85" style="IBUITableViewCellStyleSubtitle" id="ohJ-wA-3tA">
-                                        <rect key="frame" x="0.0" y="468" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="495.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ohJ-wA-3tA" id="eSU-6y-MUq">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -677,9 +687,10 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98036521669999999" green="0.83621585255760156" blue="0.53084418694536106" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="Way-OF-60c" detailTextLabel="y35-GD-6zn" style="IBUITableViewCellStyleSubtitle" id="34f-mc-UiZ">
-                                        <rect key="frame" x="0.0" y="512" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="539.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="34f-mc-UiZ" id="ikW-NJ-6Yh">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -701,9 +712,10 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98036521669999999" green="0.83621585255760156" blue="0.53084418694536106" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="School Info" textLabel="teM-Vt-m9Y" detailTextLabel="JsI-xm-QiS" style="IBUITableViewCellStyleSubtitle" id="xoV-d7-1nr">
-                                        <rect key="frame" x="0.0" y="556" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="583.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xoV-d7-1nr" id="9J6-S3-66t">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -725,6 +737,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98036521669999999" green="0.83621585255760156" blue="0.53084418694536106" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="7by-ic-0Fe" kind="show" id="39g-TF-j3G"/>
                                         </connections>
@@ -734,7 +747,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                             <tableViewSection headerTitle="Courses" id="mha-P4-8Fd">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="School Info" textLabel="olB-uP-Uwc" detailTextLabel="Ycw-Sg-ohS" style="IBUITableViewCellStyleSubtitle" id="SIt-U5-TfN">
-                                        <rect key="frame" x="0.0" y="628" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="683.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SIt-U5-TfN" id="6JS-dg-D4i">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -756,26 +769,27 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="7by-ic-0Fe" kind="show" id="ZI5-8h-II9"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="School Info" textLabel="jAG-QB-ZXN" detailTextLabel="sGv-vN-eUL" style="IBUITableViewCellStyleSubtitle" id="8Eh-hP-IeN">
-                                        <rect key="frame" x="0.0" y="672" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="727.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Eh-hP-IeN" id="SJr-U2-HtN">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jAG-QB-ZXN">
-                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="ELL Programs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sGv-vN-eUL">
-                                                    <rect key="frame" x="15" y="25.5" width="78.5" height="14.5"/>
+                                                    <rect key="frame" x="16" y="25.5" width="78.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -783,26 +797,27 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="Uff-Sa-Y3o" kind="show" id="xMD-8B-KwM"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="School Info" textLabel="sKc-N8-9T6" detailTextLabel="rVU-2G-izW" style="IBUITableViewCellStyleSubtitle" id="I4b-8u-PIG">
-                                        <rect key="frame" x="0.0" y="716" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="771.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I4b-8u-PIG" id="JS8-3d-MP6">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sKc-N8-9T6">
-                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Language Classes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rVU-2G-izW">
-                                                    <rect key="frame" x="15" y="25.5" width="103" height="14.5"/>
+                                                    <rect key="frame" x="16" y="25.5" width="103" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -810,26 +825,27 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="Uff-Sa-Y3o" kind="show" id="qfR-g9-xVt"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="School Info" textLabel="B13-uG-SHb" detailTextLabel="bPt-2X-IsK" style="IBUITableViewCellStyleSubtitle" id="14c-V7-yTm">
-                                        <rect key="frame" x="0.0" y="760" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="815.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="14c-V7-yTm" id="d0j-yb-Isz">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B13-uG-SHb">
-                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sports" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bPt-2X-IsK">
-                                                    <rect key="frame" x="15" y="25.5" width="37.5" height="14.5"/>
+                                                    <rect key="frame" x="16" y="25.5" width="37.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -837,26 +853,27 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="Uff-Sa-Y3o" kind="show" id="d0d-is-fe5"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="School Info" textLabel="fdo-Dn-7fB" detailTextLabel="4ty-pU-HNn" style="IBUITableViewCellStyleSubtitle" id="BeD-jH-y3P">
-                                        <rect key="frame" x="0.0" y="804" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="859.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BeD-jH-y3P" id="g2p-A9-8W4">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fdo-Dn-7fB">
-                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Extracurriculars" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4ty-pU-HNn">
-                                                    <rect key="frame" x="15" y="25.5" width="89.5" height="14.5"/>
+                                                    <rect key="frame" x="16" y="25.5" width="89.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -864,6 +881,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="Uff-Sa-Y3o" kind="show" id="7r5-vE-Wg0"/>
                                         </connections>
@@ -873,7 +891,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                             <tableViewSection headerTitle="Location" id="cws-7s-mzm" userLabel="Location">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="kgk-cs-Rmw" detailTextLabel="JXI-PW-BcG" style="IBUITableViewCellStyleSubtitle" id="5pO-y8-t2a">
-                                        <rect key="frame" x="0.0" y="876" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="959.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5pO-y8-t2a" id="cCB-fU-dpW">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -895,9 +913,10 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="FMa-am-fCv" detailTextLabel="w2q-dR-lyw" style="IBUITableViewCellStyleSubtitle" id="JCA-xu-8MT">
-                                        <rect key="frame" x="0.0" y="920" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1003.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JCA-xu-8MT" id="vDZ-lR-uuM">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -919,9 +938,10 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="NOz-lL-UJC" detailTextLabel="5Jb-fI-lGH" style="IBUITableViewCellStyleSubtitle" id="mSq-ZO-8Lo">
-                                        <rect key="frame" x="0.0" y="964" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1047.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mSq-ZO-8Lo" id="3h4-jU-zKL">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -943,9 +963,10 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="wi3-vX-Ax5" detailTextLabel="68I-f9-aZ6" style="IBUITableViewCellStyleSubtitle" id="4Ul-pi-Eh8">
-                                        <rect key="frame" x="0.0" y="1008" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1091.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Ul-pi-Eh8" id="e7W-pm-A9Q">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -967,13 +988,14 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Transit" id="gll-VO-SlD">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="School Info" textLabel="Zj0-wT-si7" detailTextLabel="5aP-ct-Cbc" style="IBUITableViewCellStyleSubtitle" id="PW9-sb-sb7">
-                                        <rect key="frame" x="0.0" y="1080" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1191.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PW9-sb-sb7" id="26j-Gw-f9X">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -995,12 +1017,13 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="Uff-Sa-Y3o" kind="show" id="4sE-os-lij"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="School Info" textLabel="IfV-6d-3nT" detailTextLabel="Lts-ZD-M3N" style="IBUITableViewCellStyleSubtitle" id="qg2-nL-jkK">
-                                        <rect key="frame" x="0.0" y="1124" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1235.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qg2-nL-jkK" id="03k-Gc-PLw">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -1022,6 +1045,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="Uff-Sa-Y3o" kind="show" id="YS7-GR-Gzm"/>
                                         </connections>
@@ -1031,7 +1055,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                             <tableViewSection headerTitle="Contact" id="Idh-F1-LeR" userLabel="Contact">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="School Info" textLabel="VvV-3k-HmU" detailTextLabel="1qb-nb-m6P" style="IBUITableViewCellStyleSubtitle" id="bQZ-w9-MKt">
-                                        <rect key="frame" x="0.0" y="1196" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1335.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bQZ-w9-MKt" id="V5c-Tg-BNw">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -1053,9 +1077,10 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="School Info" textLabel="rN5-mc-z7T" detailTextLabel="a3u-9y-2pp" style="IBUITableViewCellStyleSubtitle" id="BPL-he-eRl">
-                                        <rect key="frame" x="0.0" y="1240" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1379.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BPL-he-eRl" id="U7i-cE-gL5">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -1077,9 +1102,10 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="vUT-fg-U5e" detailTextLabel="aPz-wE-b9h" style="IBUITableViewCellStyleSubtitle" id="LtR-X4-NfP">
-                                        <rect key="frame" x="0.0" y="1284" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1423.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LtR-X4-NfP" id="Sgu-FM-vaA">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1101,6 +1127,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1149,7 +1176,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
             <objects>
                 <tableViewController id="Uff-Sa-Y3o" customClass="DetailTableViewController" customModule="NYC_High_School_Info" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="tbd-db-as1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="530"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -1169,6 +1196,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.78448764743962263" green="0.98036521669999999" blue="0.58445117013476866" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1190,7 +1218,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                         <viewControllerLayoutGuide type="bottom" id="19D-Iw-mIa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Q2m-6N-Gug">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="530"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cd-cL-gjF">
@@ -1253,6 +1281,6 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
     <inferredMetricsTieBreakers>
         <segue reference="fck-m3-OgQ"/>
         <segue reference="4sE-os-lij"/>
-        <segue reference="T6B-VE-Fgm"/>
+        <segue reference="Cl1-js-sED"/>
     </inferredMetricsTieBreakers>
 </document>
