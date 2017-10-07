@@ -132,7 +132,6 @@ extension School {
         let formattedQuery = query.replacingOccurrences(of: " ", with: "%")
         //let urlRoot = "https://data.cityofnewyork.us/resource/4isn-xf7m.json"
         let urlRoot = "https://data.cityofnewyork.us/resource/97mf-9njv.json"
-        //let urlPath = "?$where=lower(\(filterOptions[0])) like lower('%25\(formattedQuery)%25')&$order=\(filterOptions[1]) \(filterOptions[2])"
         let urlPath = "?$where=lower(\(filterOptions[0]))%20like%20lower(%27%25\(formattedQuery.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)%25%27)&$order=\(filterOptions[1])%20\(filterOptions[2])"
         let url = urlRoot + urlPath
         //print(url)
@@ -155,11 +154,10 @@ extension School {
 
     }
     
-    static func retrieveSchoolWithCount(limit: Int, offset: Int, completion: @escaping ([School], Bool, Int) -> Void){
+    /*static func retrieveSchoolWithCount(limit: Int, offset: Int, completion: @escaping ([School], Bool, Int) -> Void){
         print("retrieveSchoolWithCount starting")
         //let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/9pyc-nsiu.json?$limit=\(limit)&$offset=\(offset)")!;
         //let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/4isn-xf7m.json?$limit=\(limit)&$offset=\(offset)")!;
-        let urlRoot = "https://data.cityofnewyork.us/resource/97mf-9njv.json"
 
         let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/97mf-9njv.json?$limit=\(limit)&$offset=\(offset)")!;
 
@@ -175,7 +173,7 @@ extension School {
         print("retrieveSchoolWithCount completion")
         completion(schools, error, statusCode)
         })
-    }
+    }*/
     
     static func retrieveSchoolFromCode(code: String, completion: @escaping (School?, Bool) -> Void){
         let url = "https://data.cityofnewyork.us/resource/97mf-9njv.json"
@@ -198,9 +196,11 @@ extension School {
     
     static func json(fromURL urlComponents: URLComponents, completion: @escaping ([[String: Any]], Bool, Int) -> Void) {
         print("json method starting")
+        var request = URLRequest(url: urlComponents.url!)
         let session: URLSession = URLSession(configuration: .default) // shared session for interacting with the web service
         var json = [[String: Any]]()
-        session.dataTask(with: urlComponents.url!, completionHandler: { (data,response, error) -> Void in
+        request.setValue(AuthInfo.API_KEY, forHTTPHeaderField: "X-App-Token")
+        session.dataTask(with: request, completionHandler: { (data,response, error) -> Void in
             let statusCode = (response as! HTTPURLResponse).statusCode
             let errorBool = !(statusCode/100 == 2)
             print("code: \(statusCode)")
@@ -216,6 +216,7 @@ extension School {
         }).resume()
     }
   
+    /*
     static func coordinates(fromSchoolCode code: String, completion: @escaping ([String: Double], Bool, Int) -> Void){
         let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/9pyc-nsiu.json?ats_system_code=\(code)&$select=longitude,%20latitude")!;
         print(urlComponents)
@@ -233,7 +234,7 @@ extension School {
             completion(coordinates, error, statusCode)
         })
     }
-    
+    */
     static func initializeMapDictionary(){
         School.keyMap = Dictionary(keys: readableTerms, values: keys)
 
