@@ -36,8 +36,7 @@ struct School {
         "extracurricular_activities",
         
         //location
-        "boro",
-        //"location",
+        "city",
         "primary_address_line_1",
         "zip",
         "neighborhood",
@@ -59,6 +58,7 @@ struct School {
         "psal_sports_girls",
         "psal_sports_coed",
         "school_sports"
+        
     ]
     
     static let readableTerms = [
@@ -97,9 +97,10 @@ struct School {
 extension School {
     init?(json: [String: Any]) {
         
-        
+        var programs = [Program]()
         for key in School.keys {
             if let val = json[key] {
+                
                 values[key] = val
                 if key == "attendance_rate" || key == "graduation_rate" {
                     values[key] = School.formatPercent(value: val)
@@ -108,15 +109,26 @@ extension School {
                 values[key] = "N/A"
             }
         }
+        for key in json.keys {
+            if Program.programKeys.contains(String(key.dropLast())){
+                let prgKey = String(key.dropLast())
+                let num = Int(String(key.last!))!
+                if programs.count < num {
+                    var program = Program()
+                    program.values[prgKey] = (json[key] as! String)
+                    programs.append(program)
+                }else{
+                    programs[num - 1].values[prgKey] = (json[key] as! String)
+                }
+            }
+        }
+        values["programs"] = programs
         
-
     }
     
     static func formatPercent(value: Any?) -> String {
         if let val = value as? String {
-            print(val)
             if let double = Double(val){
-                print(double)
                 return  "\(Int(double * 100))%"
             }else{
                 return val
@@ -126,7 +138,7 @@ extension School {
         }
         return "N/A"
     }
-
+    
     static func schools(withMatching query: String, filterOptions: [String], completion: @escaping ([School], Bool, Int) -> Void) {
         print("withNameMatching starting")
         let formattedQuery = query.replacingOccurrences(of: " ", with: "%")
@@ -151,29 +163,29 @@ extension School {
             print("withNameMatching completion")
             completion(schools, error, statusCode)
         })
-
+        
     }
     
     /*static func retrieveSchoolWithCount(limit: Int, offset: Int, completion: @escaping ([School], Bool, Int) -> Void){
-        print("retrieveSchoolWithCount starting")
-        //let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/9pyc-nsiu.json?$limit=\(limit)&$offset=\(offset)")!;
-        //let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/4isn-xf7m.json?$limit=\(limit)&$offset=\(offset)")!;
-
-        let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/97mf-9njv.json?$limit=\(limit)&$offset=\(offset)")!;
-
-        var schools = [School]()
-        json(fromURL: urlComponents, completion: { (json, error, statusCode) in
-            if(!error){
-                for result in json {
-                    if let school = School(json: result) {
-                        schools.append(school)
-                    }
-                }
-            }
-        print("retrieveSchoolWithCount completion")
-        completion(schools, error, statusCode)
-        })
-    }*/
+     print("retrieveSchoolWithCount starting")
+     //let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/9pyc-nsiu.json?$limit=\(limit)&$offset=\(offset)")!;
+     //let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/4isn-xf7m.json?$limit=\(limit)&$offset=\(offset)")!;
+     
+     let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/97mf-9njv.json?$limit=\(limit)&$offset=\(offset)")!;
+     
+     var schools = [School]()
+     json(fromURL: urlComponents, completion: { (json, error, statusCode) in
+     if(!error){
+     for result in json {
+     if let school = School(json: result) {
+     schools.append(school)
+     }
+     }
+     }
+     print("retrieveSchoolWithCount completion")
+     completion(schools, error, statusCode)
+     })
+     }*/
     
     static func retrieveSchoolFromCode(code: String, completion: @escaping (School?, Bool) -> Void){
         let url = "https://data.cityofnewyork.us/resource/97mf-9njv.json"
@@ -209,35 +221,17 @@ extension School {
                     let temp = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
                     json = temp!
                 }
-
+                
             }
             print("json method completion")
             completion(json, errorBool, statusCode)
         }).resume()
     }
-  
-    /*
-    static func coordinates(fromSchoolCode code: String, completion: @escaping ([String: Double], Bool, Int) -> Void){
-        let urlComponents: URLComponents = URLComponents(string: "https://data.cityofnewyork.us/resource/9pyc-nsiu.json?ats_system_code=\(code)&$select=longitude,%20latitude")!;
-        print(urlComponents)
-        json(fromURL: urlComponents, completion: { (json, error, statusCode) in
-            var coordinates: [String: Double] = [:]
-            if(!error){
-                guard let lat = json[0]["latitude"] as? String,
-                    let lon = json[0]["longitude"] as? String
-                    else{
-                        print("here8")
-                        return
-                }
-            coordinates = ["latitude": Double(lat)!, "longitude": Double(lon)!]
-            }
-            completion(coordinates, error, statusCode)
-        })
-    }
-    */
+    
+    
     static func initializeMapDictionary(){
         School.keyMap = Dictionary(keys: readableTerms, values: keys)
-
+        
     }
     
 }

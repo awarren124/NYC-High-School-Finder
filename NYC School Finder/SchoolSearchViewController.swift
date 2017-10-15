@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import CoreData
 
 class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
@@ -28,6 +29,7 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
         tableView.dataSource = self
         tableView.delegate = self
         School.initializeMapDictionary()
+        Program.initializeMapDictionary()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -51,20 +53,15 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
             filters[1] = ""
             filters[2] = ""
         }
-        //print(filters)
-        //print(School.keyMap)
         School.schools(withMatching: text, filterOptions: filters as! [String], completion: { (schools, error, statusCode) in
             if(!error){
                 self.items = schools
-                //print(schools)
                 OperationQueue.main.addOperation {
                     self.searchBar.endEditing(true)
                     self.tableView.reloadData()
-                    print("huh")
                 }
                 SVProgressHUD.showSuccess(withStatus: "Done!")
                 SVProgressHUD.dismiss(withDelay: 1)
-                print("realoding data...")
             }else{
                 switch (statusCode / 100) {
                 case 4:
@@ -78,11 +75,6 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
                     break
                 }
                 SVProgressHUD.dismiss(withDelay: 3)
-                //let alertController = UIAlertController(title: "Error", message: "An Error Occured", preferredStyle: .alert)
-                //alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                //OperationQueue.main.addOperation {
-                  //  self.present(alertController, animated: true, completion: nil)
-                //}
             }
         })
     }
@@ -101,7 +93,6 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print("numberOfRowsInSection: \(items.count)")
         return items.count
     }
 
@@ -114,12 +105,26 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("prepare for segue")
         if let controller = segue.destination as? SchoolInfoViewController{
             let cell = sender as! UITableViewCell
             let indexPath = self.tableView!.indexPath(for: cell)
             controller.currentSchool = items[(indexPath?.row)!]
-            controller.savedSchool = false
+            do{
+                let schoolContext = (UIApplication.shared.delegate as! AppDelegate).schoolPersistentContainer.viewContext
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SchoolModel")
+                fetchRequest.predicate = NSPredicate(format: "dbn == %@", items[(indexPath?.row)!].values["dbn"] as! String)
+                let savedMatchingSchools = try schoolContext.fetch(fetchRequest) as! [SchoolModel]
+                if savedMatchingSchools.count != 0 {
+                    controller.savedSchool = true
+                }else{
+                    controller.savedSchool = false
+                }
+                
+            }
+            catch{
+                
+            }
+            controller.currentPrograms = items[(indexPath?.row)!].values["programs"] as! [Program]
         }
     }
 

@@ -59,6 +59,30 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="xJU-gl-bTA">
+                                        <rect key="frame" x="0.0" y="88" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xJU-gl-bTA" id="w8P-1k-gFt">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Reload on Filter Change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7n-dw-BrZ">
+                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SU4-vy-fZx">
+                                                    <rect key="frame" x="320" y="6" width="49" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="filterReloadSwitchValueChanged:" destination="x47-VO-d4x" eventType="valueChanged" id="oBg-ns-NMt"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -68,6 +92,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="tab 3" id="2js-1T-Vrd"/>
+                    <connections>
+                        <outlet property="filterRealoadSwitch" destination="SU4-vy-fZx" id="6t0-Mu-Qfg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frf-nn-VkF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -697,14 +724,14 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Way-OF-60c">
-                                                    <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Geoeligibility" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y35-GD-6zn">
-                                                    <rect key="frame" x="16" y="25.5" width="73.5" height="14.5"/>
+                                                    <rect key="frame" x="15" y="25.5" width="73.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -722,14 +749,14 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="teM-Vt-m9Y">
-                                                    <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Additional Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JsI-xm-QiS">
-                                                    <rect key="frame" x="16" y="25.5" width="81.5" height="14.5"/>
+                                                    <rect key="frame" x="15" y="25.5" width="81.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -886,26 +913,47 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                             <segue destination="Uff-Sa-Y3o" kind="show" id="7r5-vE-Wg0"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="School Info" textLabel="adG-2F-e0F" style="IBUITableViewCellStyleDefault" id="igu-Pa-Edf">
+                                        <rect key="frame" x="0.0" y="903.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="igu-Pa-Edf" id="qK2-ao-rt8">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Programs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="adG-2F-e0F">
+                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="Uff-Sa-Y3o" kind="show" id="m5j-65-4Jl"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Location" id="cws-7s-mzm" userLabel="Location">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="kgk-cs-Rmw" detailTextLabel="JXI-PW-BcG" style="IBUITableViewCellStyleSubtitle" id="5pO-y8-t2a">
-                                        <rect key="frame" x="0.0" y="959.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1003.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5pO-y8-t2a" id="cCB-fU-dpW">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kgk-cs-Rmw">
-                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Borough" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JXI-PW-BcG">
-                                                    <rect key="frame" x="15" y="25.5" width="48" height="14.5"/>
+                                                    <rect key="frame" x="16" y="25.5" width="48" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -916,21 +964,21 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                         <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="FMa-am-fCv" detailTextLabel="w2q-dR-lyw" style="IBUITableViewCellStyleSubtitle" id="JCA-xu-8MT">
-                                        <rect key="frame" x="0.0" y="1003.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1047.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JCA-xu-8MT" id="vDZ-lR-uuM">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FMa-am-fCv">
-                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w2q-dR-lyw">
-                                                    <rect key="frame" x="15" y="25.5" width="48.5" height="14.5"/>
+                                                    <rect key="frame" x="16" y="25.5" width="48.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -941,21 +989,21 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                         <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="NOz-lL-UJC" detailTextLabel="5Jb-fI-lGH" style="IBUITableViewCellStyleSubtitle" id="mSq-ZO-8Lo">
-                                        <rect key="frame" x="0.0" y="1047.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1091.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mSq-ZO-8Lo" id="3h4-jU-zKL">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NOz-lL-UJC">
-                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Zip Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Jb-fI-lGH">
-                                                    <rect key="frame" x="15" y="25.5" width="51.5" height="14.5"/>
+                                                    <rect key="frame" x="16" y="25.5" width="51.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -966,21 +1014,21 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                         <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="wi3-vX-Ax5" detailTextLabel="68I-f9-aZ6" style="IBUITableViewCellStyleSubtitle" id="4Ul-pi-Eh8">
-                                        <rect key="frame" x="0.0" y="1091.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1135.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Ul-pi-Eh8" id="e7W-pm-A9Q">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wi3-vX-Ax5">
-                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Neighborhood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="68I-f9-aZ6">
-                                                    <rect key="frame" x="15" y="25.5" width="81" height="14.5"/>
+                                                    <rect key="frame" x="16" y="25.5" width="81" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -995,7 +1043,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                             <tableViewSection headerTitle="Transit" id="gll-VO-SlD">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="School Info" textLabel="Zj0-wT-si7" detailTextLabel="5aP-ct-Cbc" style="IBUITableViewCellStyleSubtitle" id="PW9-sb-sb7">
-                                        <rect key="frame" x="0.0" y="1191.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1235.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PW9-sb-sb7" id="26j-Gw-f9X">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -1023,7 +1071,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="School Info" textLabel="IfV-6d-3nT" detailTextLabel="Lts-ZD-M3N" style="IBUITableViewCellStyleSubtitle" id="qg2-nL-jkK">
-                                        <rect key="frame" x="0.0" y="1235.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1279.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qg2-nL-jkK" id="03k-Gc-PLw">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -1055,7 +1103,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                             <tableViewSection headerTitle="Contact" id="Idh-F1-LeR" userLabel="Contact">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="School Info" textLabel="VvV-3k-HmU" detailTextLabel="1qb-nb-m6P" style="IBUITableViewCellStyleSubtitle" id="bQZ-w9-MKt">
-                                        <rect key="frame" x="0.0" y="1335.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1379.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bQZ-w9-MKt" id="V5c-Tg-BNw">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -1080,7 +1128,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                         <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="School Info" textLabel="rN5-mc-z7T" detailTextLabel="a3u-9y-2pp" style="IBUITableViewCellStyleSubtitle" id="BPL-he-eRl">
-                                        <rect key="frame" x="0.0" y="1379.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1423.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BPL-he-eRl" id="U7i-cE-gL5">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -1105,7 +1153,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                         <color key="backgroundColor" red="0.98039966820000002" green="0.83489477629999997" blue="0.52959746119999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="School Info" textLabel="vUT-fg-U5e" detailTextLabel="aPz-wE-b9h" style="IBUITableViewCellStyleSubtitle" id="LtR-X4-NfP">
-                                        <rect key="frame" x="0.0" y="1423.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1467.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LtR-X4-NfP" id="Sgu-FM-vaA">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1180,7 +1228,7 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Detail Cell" textLabel="XZ6-TA-bKy" style="IBUITableViewCellStyleDefault" id="Iu8-3w-D5F">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Detail Cell Basic" textLabel="XZ6-TA-bKy" style="IBUITableViewCellStyleDefault" id="Iu8-3w-D5F">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Iu8-3w-D5F" id="mzu-Sc-dqg">
@@ -1197,6 +1245,31 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.78448764743962263" green="0.98036521669999999" blue="0.58445117013476866" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Detail Cell Subtitle" textLabel="stq-q8-JZ3" detailTextLabel="vlK-AD-vL9" style="IBUITableViewCellStyleSubtitle" id="xrw-08-qOJ">
+                                <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xrw-08-qOJ" id="EC1-RV-2Jw">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="stq-q8-JZ3">
+                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vlK-AD-vL9">
+                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.78448764739999999" green="0.98036521669999999" blue="0.58445117010000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1281,6 +1354,6 @@ API via Socrata (http://socrata.com/)under CC BY-NC-SA 3.0 (http://creativecommo
     <inferredMetricsTieBreakers>
         <segue reference="fck-m3-OgQ"/>
         <segue reference="4sE-os-lij"/>
-        <segue reference="Cl1-js-sED"/>
+        <segue reference="xbX-SJ-iSw"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,8 +10,14 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
         
+    @IBOutlet weak var filterRealoadSwitch: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let val = UserDefaults.standard.object(forKey: "Filter Reload") as? Bool {//bool(forKey: "Filter Reload"){
+            filterRealoadSwitch.isOn = val
+        }else{
+            UserDefaults.standard.set(true, forKey: "Filter Reload")
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -32,4 +38,10 @@ class SettingsTableViewController: UITableViewController {
             }
         }
     }
+    
+    @IBAction func filterReloadSwitchValueChanged(_ sender: UISwitch) {
+        UserDefaults.standard.set(sender.isOn, forKey: "Filter Reload")
+        UserDefaults.standard.synchronize()
+    }
+    
 }

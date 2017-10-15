@@ -17,6 +17,8 @@
 		018648741F758A0E0030EBDB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018648731F758A0E0030EBDB /* SettingsTableViewController.swift */; };
 		01946E671F5DAA4900298B5B /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01946E661F5DAA4900298B5B /* FilterViewController.swift */; };
 		01946E691F5DC61300298B5B /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01946E681F5DC61300298B5B /* DictionaryExtension.swift */; };
+		019A08591F8AFC780031A80C /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019A08581F8AFC780031A80C /* Program.swift */; };
+		019A085F1F8B1BF10031A80C /* ProgramModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 019A085D1F8B1BF10031A80C /* ProgramModel.xcdatamodeld */; };
 		01C395901F5B1F3100D9670D /* SchoolInfoTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3958F1F5B1F3100D9670D /* SchoolInfoTableController.swift */; };
 		01DBAD451F70B135003422B1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DBAD441F70B135003422B1 /* CoreData.framework */; };
 		01E540D01F53A054005CAC3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E540CF1F53A054005CAC3F /* AppDelegate.swift */; };
@@ -39,6 +41,8 @@
 		018648731F758A0E0030EBDB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		01946E661F5DAA4900298B5B /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		01946E681F5DC61300298B5B /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		019A08581F8AFC780031A80C /* Program.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
+		019A085E1F8B1BF10031A80C /* ProgramModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProgramModel.xcdatamodel; sourceTree = "<group>"; };
 		01C3958F1F5B1F3100D9670D /* SchoolInfoTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolInfoTableController.swift; sourceTree = "<group>"; };
 		01DBAD441F70B135003422B1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		01E540CC1F53A054005CAC3F /* NYC High School Info.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NYC High School Info.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,10 +96,12 @@
 				01E540D11F53A054005CAC3F /* ViewController.swift */,
 				01E540D31F53A054005CAC3F /* Main.storyboard */,
 				018614331F6F6A790029BBBC /* SchoolModel.xcdatamodeld */,
+				019A085D1F8B1BF10031A80C /* ProgramModel.xcdatamodeld */,
 				01E540D61F53A054005CAC3F /* Assets.xcassets */,
 				01E540D81F53A054005CAC3F /* LaunchScreen.storyboard */,
 				01E540DB1F53A054005CAC3F /* Info.plist */,
 				01E540E11F53AC98005CAC3F /* School.swift */,
+				019A08581F8AFC780031A80C /* Program.swift */,
 				0104492A1F57AC320055DBD4 /* SchoolSearchViewController.swift */,
 				01C3958F1F5B1F3100D9670D /* SchoolInfoTableController.swift */,
 				010EEFE91F5B74E50031DE45 /* SchoolInfoViewController.swift */,
@@ -259,10 +265,12 @@
 				0104492B1F57AC320055DBD4 /* SchoolSearchViewController.swift in Sources */,
 				018614351F6F6A790029BBBC /* SchoolModel.xcdatamodeld in Sources */,
 				010EEFEC1F5CD8410031DE45 /* ParagraphViewController.swift in Sources */,
+				019A08591F8AFC780031A80C /* Program.swift in Sources */,
 				01946E671F5DAA4900298B5B /* FilterViewController.swift in Sources */,
 				010EEFEA1F5B74E50031DE45 /* SchoolInfoViewController.swift in Sources */,
 				010EEFEE1F5CDC8A0031DE45 /* DetailTableViewController.swift in Sources */,
 				01C395901F5B1F3100D9670D /* SchoolInfoTableController.swift in Sources */,
+				019A085F1F8B1BF10031A80C /* ProgramModel.xcdatamodeld in Sources */,
 				01946E691F5DC61300298B5B /* DictionaryExtension.swift in Sources */,
 				013CF0201F71C2D900AD8AF6 /* SavedSchoolsTableViewController.swift in Sources */,
 				01E540E21F53AC98005CAC3F /* School.swift in Sources */,
@@ -447,6 +455,16 @@
 			);
 			currentVersion = 018614341F6F6A790029BBBC /* SchoolModel.xcdatamodel */;
 			path = SchoolModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		019A085D1F8B1BF10031A80C /* ProgramModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				019A085E1F8B1BF10031A80C /* ProgramModel.xcdatamodel */,
+			);
+			currentVersion = 019A085E1F8B1BF10031A80C /* ProgramModel.xcdatamodel */;
+			path = ProgramModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

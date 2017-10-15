@@ -52,7 +52,6 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         searchByPicker.selectRow(searchByKeys.index(of: schoolView.currentSearchByFilter)!, inComponent: 0, animated: true)
         sortByPicker.selectRow(sortByKeys.index(of: schoolView.currentSortByFilter)!, inComponent: 0, animated: true)
         sortByPicker.selectRow(sortByDirections.index(of: schoolView.currentSortByDirection)!, inComponent: 1, animated: true)
-        print(schoolView.currentSearchByFilter, schoolView.currentSortByFilter, schoolView.currentSortByDirection)
 
         
         // Do any additional setup after loading the view.
@@ -112,7 +111,6 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             }else{
                 schoolView.currentSortByDirection = sortByDirections[row]
             }
-            //print(currentSortByDirection)
             break
         default:
             break
@@ -121,7 +119,9 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     @IBAction func doneButtonPressed(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true, completion: {
-            self.schoolView.search()
+            if UserDefaults.standard.bool(forKey: "Filter Reload") {
+                self.schoolView.search()
+            }
         })
     }
 

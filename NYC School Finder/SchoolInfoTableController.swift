@@ -12,19 +12,17 @@ import SVProgressHUD
 class SchoolInfoTableViewController: UITableViewController {
     
     public var currentSchool: School!
+    public var currentPrograms: [Program]!
     
     @IBOutlet var cells: [UITableViewCell]!
     
-    let boroughCellIndex = 18
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         for i in 0..<cells.count {
             cells[i].textLabel!.text = currentSchool.values[School.keys[i]] as? String
-            print(cells[i].detailTextLabel!.text, i)
         }
-        cells[boroughCellIndex].textLabel!.text = formatBorough(forAbbreviation: currentSchool.values["boro"] as! String)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -51,40 +49,48 @@ class SchoolInfoTableViewController: UITableViewController {
         }
         
         if let controller = segue.destination as? DetailTableViewController{
-            switch cell.detailTextLabel!.text! {
-            case "Sports":
-                
-                guard let _ = currentSchool.values["psal_sports_boys"] as? String,
-                    let _ = currentSchool.values["psal_sports_girls"] as? String,
-                    let _ = currentSchool.values["psal_sports_coed"] as? String,
-                    let _ = currentSchool.values["school_sports"] as? String else {break}
-                
-                controller.unformattedSports = [
-                    currentSchool.values["psal_sports_boys"] as! String,
-                    currentSchool.values["psal_sports_girls"] as! String,
-                    currentSchool.values["psal_sports_coed"] as! String,
-                    currentSchool.values["school_sports"] as! String
-                ]
-                controller.detailType = .Sports
-                break
-                
-            default:
-                if let val = currentSchool.values[School.keyMap[cell.detailTextLabel!.text!]!] as? String {
-                    controller.unformattedText = val
-                }
+            if cell.detailTextLabel != nil {
                 switch cell.detailTextLabel!.text! {
-                case "Subway":
-                    controller.detailType = .Subway
+                case "Sports":
+                    
+                    guard let _ = currentSchool.values["psal_sports_boys"] as? String,
+                        let _ = currentSchool.values["psal_sports_girls"] as? String,
+                        let _ = currentSchool.values["psal_sports_coed"] as? String,
+                        let _ = currentSchool.values["school_sports"] as? String else {break}
+                    
+                    controller.unformattedSports = [
+                        currentSchool.values["psal_sports_boys"] as! String,
+                        currentSchool.values["psal_sports_girls"] as! String,
+                        currentSchool.values["psal_sports_coed"] as! String,
+                        currentSchool.values["school_sports"] as! String
+                    ]
+                    controller.detailType = .Sports
+                    break
+                case "Programs":
+                    controller.detailType = .Program
+                    controller.programs = currentPrograms
                     break
                 default:
-                    controller.detailType = .Default
+                    if let val = currentSchool.values[School.keyMap[cell.detailTextLabel!.text!]!] as? String {
+                        controller.unformattedText = val
+                    }
+                    switch cell.detailTextLabel!.text! {
+                    case "Subway":
+                        controller.detailType = .Subway
+                        break
+                    default:
+                        controller.detailType = .Default
+                    }
+                    break
                 }
-                break
+                
+                
+                
+                controller.title = cell.detailTextLabel!.text!
+            }else{
+                controller.programs = currentPrograms
+                controller.detailType = .Program
             }
-            
-            
-            
-            controller.title = cell.detailTextLabel!.text!
         }
     }
     
@@ -140,22 +146,6 @@ class SchoolInfoTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func formatBorough(forAbbreviation abbreviation: String) -> String{
-        switch abbreviation {
-        case "M":
-            return "Manhattan"
-        case "B":
-            return "Brooklyn"
-        case "X":
-            return "Bronx"
-        case "S":
-            return "Staten Island"
-        case "Q":
-            return "Queens"
-        default:
-            return "N/A"
-        }
-    }
     
     /*
      // Override to support conditional editing of the table view.

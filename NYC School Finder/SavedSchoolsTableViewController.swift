@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import SVProgressHUD
+import CoreData
 
 class SavedSchoolsTableViewController: UITableViewController {
 
     var savedSchools: [SchoolModel] = []
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    let schoolContext = (UIApplication.shared.delegate as! AppDelegate).schoolPersistentContainer.viewContext
+    let prgContext = (UIApplication.shared.delegate as! AppDelegate).programPersistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +28,12 @@ class SavedSchoolsTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         do {
-            savedSchools = try context.fetch(SchoolModel.fetchRequest())
+            savedSchools = try schoolContext.fetch(SchoolModel.fetchRequest())
             tableView!.reloadData()
         }
         catch {
-            print("Fetching Failed")
-            //TODO: add error popup
+            SVProgressHUD.showError(withStatus: "Unable to Show Saved Schools")
+            SVProgressHUD.dismiss(withDelay: 2)
         }
 
     }
@@ -89,8 +91,22 @@ class SavedSchoolsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            context.delete(savedSchools[indexPath.row])
+            var programs = [ProgramModel]()
+            do {
+                //savedSchools = try schoolContext.fetch(SchoolModel.fetchRequest())
+                let programFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ProgramModel")
+                programFetchRequest.predicate = NSPredicate(format: "dbn == %@", savedSchools[indexPath.row].dbn!)
+                programs = try prgContext.fetch(programFetchRequest) as! [ProgramModel]
+            }
+            catch {
+            }
+            for program in programs {
+                prgContext.delete(program)
+            }
+            schoolContext.delete(savedSchools[indexPath.row])
             savedSchools.remove(at: indexPath.row)
+           
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -107,13 +123,30 @@ class SavedSchoolsTableViewController: UITableViewController {
             let cell = sender as! UITableViewCell
             let indexPath = self.tableView!.indexPath(for: cell)
             let selectedSchoolModel = savedSchools[indexPath!.row]
-            print(selectedSchoolModel.entity.attributesByName)
             var dict: [String: String] = [:]
             for key in selectedSchoolModel.entity.attributesByName.keys{
                 dict[key] = selectedSchoolModel.value(forKey: key) as? String
             }
             vc.currentSchool = School(json: dict)
             vc.savedSchool = true
+            do{
+                let programFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ProgramModel")
+                programFetchRequest.predicate = NSPredicate(format: "dbn == %@", selectedSchoolModel.dbn!)
+
+                let programModels = try prgContext.fetch(programFetchRequest) as! [ProgramModel]
+                var currentPrograms = [Program]()
+                for programModel in programModels {
+                    var prgDict = [String : String]()
+                    for prgKey in programModel.entity.attributesByName.keys{
+                        prgDict[prgKey] = programModel.value(forKey: prgKey) as? String
+                    }
+                    currentPrograms.append(Program(vals: prgDict))
+                }
+                vc.currentPrograms = currentPrograms
+            }
+            catch{
+                
+            }
         }
     }
  

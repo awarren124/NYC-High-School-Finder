@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import SVProgressHUD
+import CoreData
 
 class SchoolInfoViewController: UIViewController {
     
@@ -16,6 +17,7 @@ class SchoolInfoViewController: UIViewController {
     var currentSchool: School!
     var tableView: UITableView!
     var savedSchool: Bool!
+    var currentPrograms: [Program]!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     
@@ -43,6 +45,7 @@ class SchoolInfoViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? SchoolInfoTableViewController{
             vc.currentSchool = currentSchool
+            vc.currentPrograms = currentPrograms
         }
     }
     
@@ -63,14 +66,32 @@ class SchoolInfoViewController: UIViewController {
     
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let schoolModel = SchoolModel(context: context)
+        let schoolContext = (UIApplication.shared.delegate as! AppDelegate).schoolPersistentContainer.viewContext
+        let prgContext = (UIApplication.shared.delegate as! AppDelegate).programPersistentContainer.viewContext
+        let schoolModel = SchoolModel(context: schoolContext)
         for key in School.keys{
             if(key != "ASC" && key != "DESC"){
                 schoolModel.setValue(currentSchool.values[key] as! String, forKey: key)
             }
         }
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        for program in currentPrograms {
+            let programModel = ProgramModel(context: prgContext)
+
+            for key in Program.programKeys {
+                print(key)
+                if let prgVal = program.values[key] as? String {
+                    programModel.setValue(prgVal, forKey: key)
+
+                }else{
+                    programModel.setValue(nil, forKey: key)
+                }
+
+
+            }
+            programModel.dbn = currentSchool.values["dbn"] as! String
+            (UIApplication.shared.delegate as! AppDelegate).saveContext(type: .Program)
+        }
+        (UIApplication.shared.delegate as! AppDelegate).saveContext(type: .School)
         saveButton.title = "Saved"
         saveButton.isEnabled = false
     }

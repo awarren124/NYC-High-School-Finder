@@ -15,10 +15,10 @@ class DetailTableViewController: UITableViewController {
     var formattedList = [String]()
     var unformattedSports = [String]()
     var formattedSports = [[String]]()
-    
+    var programs = [Program]()
+    var formattedPrograms = [[[String]]]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
         switch detailType!{
         case .Sports:
             for sports in unformattedSports {
@@ -27,13 +27,23 @@ class DetailTableViewController: UITableViewController {
             break
         case .Subway:
             self.formattedList = unformattedText.components(separatedBy: "; ")
+            break
+        case .Program:
+            for program in programs{
+                var temp = [[String]]()
+                for key in Program.programKeys{
+                    if let val = program.values[key] {
+                        temp.append([key, val])
+                    }
+                }
+                formattedPrograms.append(temp)
+            }
         default:
             self.formattedList = unformattedText.components(separatedBy: ", ")
             break
         }
         
-        print(formattedList)
-        print(unformattedText)
+
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -54,6 +64,8 @@ class DetailTableViewController: UITableViewController {
         switch detailType!{
         case .Sports:
             return 4
+        case .Program:
+            return programs.count
         default:
             return 1
         }
@@ -65,17 +77,29 @@ class DetailTableViewController: UITableViewController {
         switch detailType!{
         case .Sports:
             return formattedSports[section].count
+        case .Program:
+            return formattedPrograms[section].count
         default:
             return formattedList.count
         }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Detail Cell", for: indexPath)
+        let cell: UITableViewCell!
+        if detailType == .Program {
+            cell = tableView.dequeueReusableCell(withIdentifier: "Detail Cell Subtitle", for: indexPath)
+
+        }else{
+            cell = tableView.dequeueReusableCell(withIdentifier: "Detail Cell Basic", for: indexPath)
+
+        }
 
         switch detailType! {
         case .Sports:
             cell.textLabel!.text = formattedSports[indexPath.section][indexPath.row]
+        case .Program:
+            cell.textLabel!.text = formattedPrograms[indexPath.section][indexPath.row][1]
+            cell.detailTextLabel!.text = Program.keyMap[formattedPrograms[indexPath.section][indexPath.row][0]]
         default:
             cell.textLabel!.text = formattedList[indexPath.row]
         }
@@ -99,6 +123,8 @@ class DetailTableViewController: UITableViewController {
             default:
                 return ""
             }
+        case .Program:
+            return programs[section].values["program"]//Program.programKeys[section]
         default:
             return ""
         }
@@ -158,5 +184,6 @@ class DetailTableViewController: UITableViewController {
 enum DetailType {
     case Sports
     case Subway
+    case Program
     case Default
 }

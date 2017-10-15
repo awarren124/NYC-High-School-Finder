@@ -4,8 +4,8 @@
         <attribute name="academicopportunities1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="addtl_info1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="attendance_rate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="boro" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dbn" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ell_programs" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="end_time" optional="YES" attributeType="String" syncable="YES"/>
