@@ -60,7 +60,11 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
                     self.searchBar.endEditing(true)
                     self.tableView.reloadData()
                 }
-                SVProgressHUD.showSuccess(withStatus: "Done!")
+                if(schools.count != 0){
+                    SVProgressHUD.showSuccess(withStatus: "Done!")
+                }else{
+                    SVProgressHUD.showInfo(withStatus: "No Results Found")
+                }
                 SVProgressHUD.dismiss(withDelay: 1)
             }else{
                 switch (statusCode / 100) {
@@ -70,6 +74,8 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
                 case 5:
                     SVProgressHUD.showError(withStatus: "An Error Occured. The Server Is Unavailable At This Time. Please Try Again Later.")
                     break
+                case 9:
+                    SVProgressHUD.showError(withStatus: "Not Connected to the Internet")
                 default:
                     SVProgressHUD.showError(withStatus: "An Error Occured.")
                     break

@@ -51,7 +51,7 @@ class DetailTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -87,7 +87,15 @@ class DetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell!
         if detailType == .Program {
-            cell = tableView.dequeueReusableCell(withIdentifier: "Detail Cell Subtitle", for: indexPath)
+            let text: NSString = NSString(string: formattedPrograms[indexPath.section][indexPath.row][1])
+            if text.size(withAttributes: [.font: UIFont.systemFont(ofSize: 17.0)]).width > UIScreen.main.bounds.width {
+                cell = tableView.dequeueReusableCell(withIdentifier: "Detail Cell Subtitle with Disclosure", for: indexPath)
+
+            }else{
+                cell = tableView.dequeueReusableCell(withIdentifier: "Detail Cell Subtitle", for: indexPath)
+
+            }
+            
 
         }else{
             cell = tableView.dequeueReusableCell(withIdentifier: "Detail Cell Basic", for: indexPath)
@@ -132,6 +140,7 @@ class DetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+
     }
     
     /*
@@ -169,15 +178,22 @@ class DetailTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let cell = sender as! UITableViewCell
+        if cell.accessoryType == UITableViewCellAccessoryType.disclosureIndicator {
+            if let vc = segue.destination as? ParagraphViewController {
+                vc.paragraph = (cell.textLabel?.text)!
+                vc.title = (cell.detailTextLabel?.text)
+            }
+        }
     }
-    */
+ 
 
 }
 

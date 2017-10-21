@@ -213,18 +213,21 @@ extension School {
         var json = [[String: Any]]()
         request.setValue(AuthInfo.API_KEY, forHTTPHeaderField: "X-App-Token")
         session.dataTask(with: request, completionHandler: { (data,response, error) -> Void in
-            let statusCode = (response as! HTTPURLResponse).statusCode
-            let errorBool = !(statusCode/100 == 2)
-            print("code: \(statusCode)")
-            if !errorBool {
-                if let data = data,
-                    let temp = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
-                    json = temp!
+            if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+                let errorBool = !(statusCode/100 == 2)
+                print("code: \(statusCode)")
+                if !errorBool {
+                    if let data = data,
+                        let temp = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
+                        json = temp!
+                    }
+                    
                 }
-                
+                print("json method completion")
+                completion(json, errorBool, statusCode)
+            }else{
+                completion([[:]], true, 999)
             }
-            print("json method completion")
-            completion(json, errorBool, statusCode)
         }).resume()
     }
     
