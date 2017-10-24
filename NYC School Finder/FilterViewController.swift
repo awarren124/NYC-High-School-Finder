@@ -17,7 +17,7 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         "School Name",
         "School Code",
         "Language Classes",
-        "Extracurricular Activities",
+        "Extracurriculars",
         "Sports",
         "Borough"
     ]
@@ -104,10 +104,12 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         switch pickerView {
         case searchByPicker:
             schoolView.currentSearchByFilter = searchByKeys[row]
+            print(searchByKeys[row])
             break
         case sortByPicker:
             if component == 0{
                 schoolView.currentSortByFilter = sortByKeys[row]
+                print(sortByKeys[row])
             }else{
                 schoolView.currentSortByDirection = sortByDirections[row]
             }
