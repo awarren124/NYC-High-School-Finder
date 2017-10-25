@@ -14,7 +14,6 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    
     var items = [School]()
     
     var selectedSchool: School!
@@ -30,6 +29,19 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
         tableView.delegate = self
         School.initializeMapDictionary()
         Program.initializeMapDictionary()
+        
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(SchoolSearchViewController.cancelLoad))
+        self.navigationController?.navigationBar.addGestureRecognizer(swipe)
+    }
+    
+    @objc func cancelLoad(){
+        //let session = URL
+        print("ayy")
+        School.session.getTasksWithCompletionHandler { (dataTasks, _, _) in
+            if dataTasks.count > 0 {
+                dataTasks[0].cancel()
+            }
+        }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -42,7 +54,7 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func search(withText text: String){
-        SVProgressHUD.show(withStatus: "Loading...")
+        SVProgressHUD.show(withStatus: "Loading...\nSwipe the top bar to cancel.")
         print("searchBarSearchButtonClicked")
         var filters = [
             School.keyMap[currentSearchByFilter],
@@ -53,6 +65,7 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
             filters[1] = ""
             filters[2] = ""
         }
+        print(filters)
         School.schools(withMatching: text, filterOptions: filters as! [String], completion: { (schools, error, statusCode) in
             if(!error){
                 self.items = schools
@@ -74,8 +87,12 @@ class SchoolSearchViewController: UIViewController, UITableViewDelegate, UITable
                 case 5:
                     SVProgressHUD.showError(withStatus: "An Error Occured. The Server Is Unavailable At This Time. Please Try Again Later.")
                     break
+                case 8:
+                    SVProgressHUD.showError(withStatus: "Search Cancelled.")
+                    break
                 case 9:
                     SVProgressHUD.showError(withStatus: "Not Connected to the Internet")
+                    break
                 default:
                     SVProgressHUD.showError(withStatus: "An Error Occured.")
                     break

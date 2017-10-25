@@ -9,7 +9,7 @@
 import Foundation
 
 struct School {
-    
+    static var session = URLSession()
     var values = [String: Any?]()
     static var keyMap: [String:String] = [:]
     static let keys = [
@@ -209,7 +209,8 @@ extension School {
     static func json(fromURL urlComponents: URLComponents, completion: @escaping ([[String: Any]], Bool, Int) -> Void) {
         print("json method starting")
         var request = URLRequest(url: urlComponents.url!)
-        let session: URLSession = URLSession(configuration: .default) // shared session for interacting with the web service
+        session  = URLSession(configuration: .default) // shared session for interacting with the web service
+        
         var json = [[String: Any]]()
         request.setValue(AuthInfo.API_KEY, forHTTPHeaderField: "X-App-Token")
         session.dataTask(with: request, completionHandler: { (data,response, error) -> Void in
@@ -226,7 +227,11 @@ extension School {
                 print("json method completion")
                 completion(json, errorBool, statusCode)
             }else{
-                completion([[:]], true, 999)
+                if (error! as NSError).code == NSURLErrorCancelled {
+                    completion([[:]], true, 888)
+                }else{
+                    completion([[:]], true, 999)
+                }
             }
         }).resume()
     }
